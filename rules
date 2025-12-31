@@ -1,0 +1,15 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	# Do nothing (binary repack)
+
+override_dh_auto_install:
+	mkdir -p debian/zen-browser/opt/zen-browser
+	mkdir -p debian/zen-browser/usr/bin
+	# Copy all files (excluding debian folder) to /opt
+	find . -maxdepth 1 ! -name debian ! -name . -exec cp -r {} debian/zen-browser/opt/zen-browser/ \;
+	# Create the symlink
+	ln -sf /opt/zen-browser/zen debian/zen-browser/usr/bin/zen-browser

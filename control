@@ -1,0 +1,15 @@
+Source: zen-browser
+Section: contrib/web
+Priority: optional
+Maintainer: Ibrahimm Admin <admin@ibrahimm.online>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.5.0
+Homepage: https://zen-browser.app/
+
+Package: zen-browser
+Architecture: amd64
+Depends: ${shlibs:Depends}, ${misc:Depends}, libgtk-3-0, libdbus-glib-1-2, libxt6
+Description: Zen Browser - Experience Tranquility
+ Zen Browser is a fork of Firefox focused on privacy and usability.
+ .
+ This package installs the official binary release.
