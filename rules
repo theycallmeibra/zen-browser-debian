@@ -13,3 +13,11 @@ override_dh_auto_install:
 	find . -maxdepth 1 ! -name debian ! -name . -exec cp -r {} debian/zen-browser/opt/zen-browser/ \;
 	# Create the symlink
 	ln -sf /opt/zen-browser/zen debian/zen-browser/usr/bin/zen-browser
+
+override_dh_strip:
+	# Don't strip the binary (it breaks signatures and internal checksums)
+	true
+
+override_dh_shlibdeps:
+	# Don't check shared libraries (we manually specified dependencies in control)
+	true
