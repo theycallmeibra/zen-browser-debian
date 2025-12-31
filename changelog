@@ -1,5 +1,11 @@
 zen-browser (1.17.15b-1) unstable; urgency=medium
 
+  * New upstream release 1.17.15b
+
+ -- Ibrahimm Admin <admin@ibrahimm.online>  Wed, 31 Dec 2025 09:33:18 +0000
+
+zen-browser (1.17.15b-1) unstable; urgency=medium
+
   * Packaging official binary release for Debian/Parrot.
   * New upstream release 1.17.15b
 
