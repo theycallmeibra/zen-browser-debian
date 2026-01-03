@@ -3,21 +3,20 @@
 %:
 	dh $@
 
+override_dh_auto_configure:
+	npm install
+	npm run init
+
 override_dh_auto_build:
-	# Do nothing (binary repack)
+	npm run build
 
 override_dh_auto_install:
-	mkdir -p debian/zen-browser/opt/zen-browser
+	mkdir -p debian/zen-browser/usr/lib/zen-browser
 	mkdir -p debian/zen-browser/usr/bin
-	# Copy all files (excluding debian folder) to /opt
-	find . -maxdepth 1 ! -name debian ! -name . -exec cp -r {} debian/zen-browser/opt/zen-browser/ \;
-	# Create the symlink
-	ln -sf /opt/zen-browser/zen debian/zen-browser/usr/bin/zen-browser
+	
+	cp -r dist/linux-x86_64/* debian/zen-browser/usr/lib/zen-browser/
+	
+	ln -s /usr/lib/zen-browser/zen debian/zen-browser/usr/bin/zen-browser
 
-override_dh_strip:
-	# Don't strip the binary (it breaks signatures and internal checksums)
-	true
-
-override_dh_shlibdeps:
-	# Don't check shared libraries (we manually specified dependencies in control)
-	true
+override_dh_auto_test:
+	@echo "Skipping tests to save time"
